@@ -1,38 +1,222 @@
-.App {
-  text-align: center;
+:root{
+  --color-bg-dark:#f5f5f5;
+  --color-bg:#fdfffd;
+  --color-grey:#d1d1d1;
+  --color-text:#22243b;
+  --color-accent:#f16e03;
+  --color-white:white;
+  --color-scrollbar:#aaa7a7;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+html.dark {
+  --color-bg-dark: #1a1c35;
+  --color-bg: #22243b;
+  --color-grey: #4e4e4e;
+  --color-text:#fdfffd;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+*{margin: 0; padding: 0;}
+
+
+body{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  background: rgb(81,87,111);
+  background: linear-gradient(106deg,rgba(81, 87, 111, 1) 0%,rgba(60, 61, 69, 1) 100%);
+  accent-color:var(--color-accent)
+}
+ul{list-style: none;}
+
+*{box-sizing: border-box;}
+
+#root{
+  width: 100%;
+  height: 60%;
+  max-width:500px;
+  background-color: var(--color-bg-dark);
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 5px 5px 21px 4px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+button{outline: none; border: none;background-color: transparent;}
+
+
+::-webkit-scrollbar{width: 0.5rem;} /* 필수 */
+::-webkit-scrollbar-track{
+  background-color: var(--color-bg-dark);
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--color-scrollbar);
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: var(--color-accent);
+}
+*{margin: 0; padding: 0;}
+
+.form {
+  width: 100%;
+  display: flex;
+  padding: 1.4rem 1rem;
+  background-color: var(--color-bg-dark);
+}
+
+.input {
+  flex: 1 0 auto;
+  font-size: 1.4rem;
+  padding: 0.7rem 1rem;
+  border: none;
+  outline: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.button {
+  cursor: pointer;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 0 2rem;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.button:hover {
+  filter: brightness(125%);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: var(--color-bg-dark);
+  border-bottom: 1px solid var(--color-grey);
+  padding: 0 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.toggle {
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: 150ms ease-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.toggle:hover {
+  transform: scale(1.1);
+  color: var(--color-accent);
+}
+
+
+.filters {
+  display: flex;
+}
+
+.filter {
+  font-size: 1.4rem;
+  margin: 0.3rem;
+  text-transform: capitalize;
+  background-color: transparent;
+  color: var(--color-accent);
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.filter:hover,
+.filter.selected {
+  opacity: 1;
+}
+
+.filter.selected::after {
+  content: "";
+  display: block;
+  margin-bottom: 0.2rem;
+  border: 1px solid var(--color-text);
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin: 0.1rem 0;
+  color: var(--color-text);
+}
+
+.checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.text {
+  flex: 1 1 0%;
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.icon {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  background-color: var(--color-grey);
+  border-radius: 50%;
+  text-align: center;
+  transition: .2s;
+
+}
+
+.icon:hover {
+  background-color: var(--color-accent);
+  transform: rotate(15deg) scale(1.2);
+
+}
+
+.button {
+  color: var(--color-text);
+  background-color: transparent;
+
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  min-height: 0;
+
+}
+
+.list {
+  /* flex:1 1 auto; */
+  flex-grow: 1;
+  overflow-y: auto;
+
+}
+.icon .button {
+  color: var(--color-text);
+  background-color: transparent;
+  padding: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.header .toggle {
+  width: 20px;
+  height: 20px;
+}
+.header .toggle svg {
+  width: 100%;
+  height: 100%;
 }
